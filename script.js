@@ -164,10 +164,10 @@ loadNodeData(function (nodesData) {
                 // Menampilkan jarak yang ditempuh antara node yang berurutan
                 displayDistanceTraveled(shortestPath, nodesData);
             } else {
-                alert('No path found between the given nodes.');
+                alert('Tidak ada path ditemukan.');
             }
         } else {
-            alert('Invalid node names. Please check your input.');
+            alert('Case Sensitive! Perhatikan huruf besar kecil.');
         }
     });
 
