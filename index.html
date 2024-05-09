@@ -17,6 +17,18 @@
             transform: rotate(90deg); /* Rotate the map container to portrait orientation */
             transform-origin: left top; /* Set the rotation origin to the top-left corner */
         }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .column {
+            flex-basis: 48%;
+        }
+
+        h2 {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -33,6 +45,49 @@
 <button id="restartVisualization">Restart Visualisasi</button>
 
 <div id="distanceTraveled"></div>
+
+<h2>List Gedung dan Ruangan</h2>
+<div class="container">
+    <div class="column">
+        <ul>
+            <li>Gedung C.C</li>
+            <li>Gedung B Pintu Depan</li>
+            <li>Gedung B Pintu Belakang</li>
+            <li>Gedung C</li>
+            <li>Gedung A Pintu Depan</li>
+            <li>Gedung A Pintu Belakang</li>
+            <li>Gedung Psikologi Pintu Depan</li>
+            <li>Gedung Psikologi Pintu Belakang</li>
+            <li>Gedung G</li>
+            <li>UPT Bahasa</li>
+            <li>Akademik FEB</li>
+            <li>Akademik FKIP</li>
+            <li>Akademik Hukum</li>
+            <li>Akademik Pertanian</li>
+            <li>Akademik Teknik</li>
+        </ul>
+    </div>
+    <div class="column">
+        <ul>
+            <li>Ruang Dosen Fisip</li>
+            <li>Ruang Dosen Teknik</li>
+            <li>Ruang Dosen FEB</li>
+            <li>Ruang Dosen FKIP</li>
+            <li>Ruang Dosen Hukum</li>
+            <li>Ruang Dosen Psikologi</li>
+            <li>Kaprodi FEB</li>
+            <li>Kaprodi Sipil dan Elektro</li>
+            <li>LPPM</li>
+            <li>PKKMB</li>
+            <li>Pelayanan Pusat</li>
+            <li>Perpustakaan</li>
+            <li>Ruang Rektor</li>
+            <li>Ruang Rapat</li>
+            <li>Wakil Rektor 1</li>
+            <li>Wakil Rektor 2</li>
+        </ul>
+    </div>
+</div>
 
 <script src="script.js"></script>
 
