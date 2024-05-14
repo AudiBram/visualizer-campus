@@ -19,3 +19,21 @@
 h2 {
     text-align: center;
 }
+
+.logo-container {
+    text-align: right;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.logo-text {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}

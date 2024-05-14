@@ -10,32 +10,14 @@
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-
-        .portrait {
-            transform: rotate(90deg); /* Rotate the map container to portrait orientation */
-            transform-origin: left top; /* Set the rotation origin to the top-left corner */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .column {
-            flex-basis: 48%;
-        }
-
-        h2 {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="logo-container">
+    <img src="img/logo_baru_yaaa.png" alt="Logo" width="200px">
+    <div class="logo-text">Unmuh Jember Maps</div>
+</div>
 
 <form id="shortestPathForm">
     <div class="row">
