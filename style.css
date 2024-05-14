@@ -1,0 +1,21 @@
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.portrait {
+    transform: rotate(90deg); /* Rotate the map container to portrait orientation */
+    transform-origin: left top; /* Set the rotation origin to the top-left corner */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.column {
+    flex-basis: 48%;
+}
+
+h2 {
+    text-align: center;
+}

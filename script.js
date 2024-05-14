@@ -2,9 +2,9 @@
 var map = L.map('map').setView([-8.173886, 113.716939], 18);
 
 // Add OpenStreetMap
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-// }).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 // Add Satellite Imagery from Google Maps
 L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
@@ -129,10 +129,15 @@ function findShortestPath(startNode, endNode, nodesData) {
 }
 
 loadNodeData(function (nodesData) {
-    // Tambahkan marker untuk setiap node
+    // Populate select elements with options
+    var startSelect = document.getElementById('startNode');
+    var endSelect = document.getElementById('endNode');
     nodesData.forEach(function (node) {
-        L.marker([node.latitude, node.longitude]).addTo(map)
-            .bindPopup("<b>" + node.node_name + "</b><br>" + node.description);
+        var option = document.createElement('option');
+        option.value = node.node_name;
+        option.textContent = node.node_name;
+        startSelect.appendChild(option.cloneNode(true));
+        endSelect.appendChild(option.cloneNode(true));
     });
 
     document.getElementById('shortestPathForm').addEventListener('submit', function (event) {
