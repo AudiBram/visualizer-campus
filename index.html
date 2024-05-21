@@ -14,12 +14,10 @@
     <link rel="icon" href="img/logo.png" type="image/x-icon">
 </head>
 <body>
-
 <div class="logo-container">
     <img src="img/logo_baru_yaaa.png" alt="Logo" width="200px">
     <div class="logo-text">Unmuh Jember Maps</div>
 </div>
-
 <form id="shortestPathForm">
     <div class="row">
         <div class="col-md-6">
@@ -35,18 +33,14 @@
             </select>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Temukan Rute Terpendek</button>
+    <div class="button-container">
+        <button type="submit" class="btn btn-primary mt-3">Temukan Rute Terpendek</button>
+        <button type="button" id="restartVisualization" class="btn btn-primary mt-3">Restart Visualisasi</button>
+    </div>
 </form>
-
 <br>
-
 <div id="map" class="map-container potrait"></div>
-
-<button type="submit" id="restartVisualization" class="btn btn-primary mt-3">Restart Visualisasi</button>
-
 <div id="distanceTraveled"></div>
-
 <script src="script.js"></script>
-
 </body>
 </html>

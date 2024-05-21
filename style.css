@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .column {
     flex-basis: 48%;
 }
@@ -36,4 +37,10 @@ h2 {
     font-family: Arial, sans-serif;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
