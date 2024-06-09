@@ -10,37 +10,105 @@
     <!-- Load Leaflet from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/logo.png" type="image/x-icon">
 </head>
 <body>
-<div class="logo-container">
-    <img src="img/logo_baru_yaaa.png" alt="Logo" width="200px">
-    <div class="logo-text">Unmuh Jember Maps</div>
-</div>
-<form id="shortestPathForm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo_baru_yaaa.png" alt="Logo" width="100px">
+            <span class="ms-3">Unmuh Jember Maps</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
     <div class="row">
-        <div class="col-md-6">
-            <label for="startNode">Posisi Mulai:</label>
-            <select class="form-select" id="startNode" name="startNode">
-                <option selected disabled>Pilih Posisi Mulai</option>
-            </select>
+        <div class="col-lg-6 col-md-12 mb-3">
+            <form id="shortestPathForm">
+                <div class="mb-3">
+                    <label for="startNode" class="form-label">Posisi Mulai:</label>
+                    <select class="form-select" id="startNode" name="startNode">
+                        <option selected disabled>Pilih Posisi Mulai</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="endNode" class="form-label">Tujuan:</label>
+                    <select class="form-select" id="endNode" name="endNode">
+                        <option selected disabled>Pilih Tujuan</option>
+                    </select>
+                </div>
+                <div class="button-container mt-3">
+                    <button type="submit" class="btn btn-primary me-2 mb-2">Temukan Rute Terpendek</button>
+                    <button type="button" id="restartVisualization" class="btn btn-secondary mb-2">Restart Visualisasi</button>
+                </div>
+            </form>
         </div>
-        <div class="col-md-6">
-            <label for="endNode">Tujuan:</label>
-            <select class="form-select" id="endNode" name="endNode">
-                <option selected disabled>Pilih Tujuan</option>
-            </select>
+        <div class="col-lg-6 col-md-12">
+            <div id="map" class="map-container"></div>
+            <div id="distanceTraveled"></div>
         </div>
     </div>
-    <div class="button-container">
-        <button type="submit" class="btn btn-primary mt-3">Temukan Rute Terpendek</button>
-        <button type="button" id="restartVisualization" class="btn btn-primary mt-3">Restart Visualisasi</button>
+</div>
+<footer class="footer bg-dark text-white text-center text-lg-start mt-5">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Unmuh Jember</h5>
+                <p>Universitas Muhammadiyah Jember. Jl. Karimata No. 49, Jember, Jawa Timur, Indonesia.</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://unmuhjember.ac.id/id/" class="text-white">Home</a></li>
+                    <li><a href="https://unmuhjember.ac.id/id/tentang-umjember/selayang-pandang/sejarah-universitas.html" class="text-white">About</a></li>
+                    <li><a href="mailto:kantorpusat@unmuhjember.ac.id" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Follow Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://www.facebook.com/umjemberofficial" class="text-white"><i class="fab fa-facebook-f me-2"></i>Facebook</a></li>
+                    <li><a href="https://x.com/unmuhjember_ofc" class="text-white"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
+                    <li><a href="https://www.instagram.com/unmuhjember_ofc/" class="text-white"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/school/universitas-muhammadiyah-jember/" class="text-white"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Contact</h5>
+                <ul class="list-unstyled">
+                    <li><a href="mailto:info@unmuhjember.ac.id" class="text-white"><i class="fas fa-envelope me-2"></i>info@unmuhjember.ac.id</a></li>
+                    <li><a href="tel:+62331422423" class="text-white"><i class="fas fa-phone me-2"></i>+62 331 422 423</a></li>
+                    <li><a href="https://www.google.com/maps/place/Muhammadiyah+University+of+Jember/@-8.1751571,113.715118,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd695d36a97d3d3:0x9e61351069cb89d0!8m2!3d-8.1751624!4d113.7176929!16s%2Fg%2F120yrdsz?entry=ttu" class="text-white"><i class="fas fa-map-marker-alt me-2"></i>Jl. Karimata No. 49, Jember, Jawa Timur</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</form>
-<br>
-<div id="map" class="map-container potrait"></div>
-<div id="distanceTraveled"></div>
+    <div class="text-center p-3 bg-secondary">
+        © 2024 Universitas Muhammadiyah Jember
+    </div>
+</footer>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
