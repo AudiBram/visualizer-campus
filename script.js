@@ -7,10 +7,27 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Add Satellite Imagery from Google Maps
-L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
     maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 }).addTo(map);
+
+// Custom icons
+var startIcon = L.icon({
+    iconUrl: 'img/start-icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32]
+});
+
+var endIcon = L.icon({
+    iconUrl: 'img/end-icon.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32]
+});
+
+// Markers for start and end points
+var startMarker = null;
+var endMarker = null;
 
 // Function untuk load data dari JSON file
 function loadNodeData(callback) {
@@ -28,7 +45,7 @@ function displayNodePhoto(node) {
             content += '<div>' + node.description + '</div>';
         }
 
-        var photoPopup = L.popup({maxWidth: 300})
+        var photoPopup = L.popup({ maxWidth: 300 })
             .setLatLng([node.latitude, node.longitude])
             .setContent(content)
             .openOn(map);
@@ -147,14 +164,20 @@ loadNodeData(function (nodesData) {
         var startNode = nodesData.find(node => node.node_name === startNodeName);
         var endNode = nodesData.find(node => node.node_name === endNodeName);
         if (startNode && endNode) {
+            if (startMarker) map.removeLayer(startMarker);
+            if (endMarker) map.removeLayer(endMarker);
+
+            startMarker = L.marker([startNode.latitude, startNode.longitude], { icon: startIcon }).addTo(map);
+            endMarker = L.marker([endNode.latitude, endNode.longitude], { icon: endIcon }).addTo(map);
+
             var shortestPath = findShortestPath(startNode, endNode, nodesData);
             if (shortestPath.length > 0) {
                 var pathCoordinates = shortestPath.map(node => [node.latitude, node.longitude]);
-                var pathLine = L.polyline(pathCoordinates, {color: 'green'}).addTo(map);
+                var pathLine = L.polyline(pathCoordinates, { color: 'green' }).addTo(map);
 
                 // Highlight node di perhitungan terpendek
                 shortestPath.forEach(function (node) {
-                    L.circleMarker([node.latitude, node.longitude], {color: 'red', radius: 6}).addTo(map)
+                    L.circleMarker([node.latitude, node.longitude], { color: 'red', radius: 6 }).addTo(map)
                         .bindPopup("<b>" + node.node_name + "</b><br>" + node.description);
                 });
 
@@ -163,7 +186,7 @@ loadNodeData(function (nodesData) {
                     var currentNode = shortestPath[i];
                     var nextNode = shortestPath[i + 1];
                     var edgeCoordinates = [[currentNode.latitude, currentNode.longitude], [nextNode.latitude, nextNode.longitude]];
-                    var edgeLine = L.polyline(edgeCoordinates, {color: 'green'}).addTo(map);
+                    var edgeLine = L.polyline(edgeCoordinates, { color: 'green' }).addTo(map);
                 }
 
                 // Menampilkan jarak yang ditempuh antara node yang berurutan
@@ -193,4 +216,14 @@ function clearMap() {
     // Reset dropdowns to their initial state
     document.getElementById('startNode').selectedIndex = 0;
     document.getElementById('endNode').selectedIndex = 0;
+
+    // Remove start and end markers
+    if (startMarker) {
+        map.removeLayer(startMarker);
+        startMarker = null;
+    }
+    if (endMarker) {
+        map.removeLayer(endMarker);
+        endMarker = null;
+    }
 }
