@@ -93,3 +93,14 @@ h2 {
 .footer .fab, .footer .fas {
     margin-right: 8px;
 }
+
+/* CSS for better styling of "Total jarak perjalanan" */
+
+#distanceTraveled {
+    font-family: Arial, sans-serif; /* Change font family */
+    font-size: 18px; /* Increase font size */
+    font-weight: bold; /* Make it bold */
+    color: #26355D; /* Change text color to a prominent one */
+    margin-top: 10px; /* Add some top margin for separation */
+}
+
