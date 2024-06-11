@@ -183,10 +183,14 @@ loadNodeData(function (nodesData) {
 
 function clearMap() {
     map.eachLayer(function (layer) {
-        if (layer instanceof L.Polyline || layer instanceof L.Marker) {
+        if (layer instanceof L.Polyline || layer instanceof L.Marker || layer instanceof L.CircleMarker) {
             map.removeLayer(layer);
         }
     });
 
-    document.getElementById('distanceTraveled'.innerText = '');
+    document.getElementById('distanceTraveled').innerText = '';
+
+    // Reset dropdowns to their initial state
+    document.getElementById('startNode').selectedIndex = 0;
+    document.getElementById('endNode').selectedIndex = 0;
 }
