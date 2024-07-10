@@ -35,7 +35,7 @@ Currently, this pathfinding only support Dijkstra. But, in the future I will upd
     - *(weighted, shortest path guaranteed)*
 - **A Star**: Optimized Dijkstra for when we know end node location. Uses lat/long distance as heuristic. **upcoming**
     - *(weighted, shortest path guaranteed)* 
-- **Greedy Best-First Search**: Faster version of A* that doesn't guarantee shortest path. **upcoming**
+- **Greedy**: Faster version of A* that doesn't guarantee shortest path. **upcoming**
     - *(weighted, shortest path not guaranteed)*
 - **Breadth First Search**: Explores all nodes equally in all directions, level-by-level. **upcoming**
     - unweighted, shortest path guaranteed
